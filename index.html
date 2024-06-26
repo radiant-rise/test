@@ -47,6 +47,7 @@
     <h2>Telegram Mini App</h2>
     <input type="text" id="userInput" placeholder="Enter some text">
     <button onclick="submitInput()">Submit</button>
+    <p id="response"></p>
 </div>
 
 <script>
@@ -58,6 +59,10 @@
             alert("Please enter some text.");
         }
     }
+
+    Telegram.WebApp.onEvent('receiveData', function(data) {
+        document.getElementById("response").innerText = "Response from bot: " + data;
+    });
 
     Telegram.WebApp.ready();
 </script>
